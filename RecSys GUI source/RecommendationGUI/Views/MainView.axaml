@@ -1,0 +1,89 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:v="clr-namespace:RecommendationGUI.Views"
+             xmlns:vm="clr-namespace:RecommendationGUI.ViewModels"
+             xmlns:dvm="clr-namespace:RecommendationGUI.ViewModels.Dummy"
+             xmlns:utils="clr-namespace:RecommendationGUI.Utils"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="RecommendationGUI.Views.MainView"
+             x:DataType="vm:MainViewModel">
+  <Design.DataContext>
+    <dvm:DummyMainViewModel/>
+  </Design.DataContext>
+
+  <UserControl.Resources>
+    <utils:HalfWidthConverter x:Key="HalfWidthConverter"/>
+  </UserControl.Resources>
+
+  <Grid>
+    
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="Auto"/>
+      <ColumnDefinition Width="1"/>
+      <ColumnDefinition Width="*"
+                        MinWidth="{Binding Bounds.Width, RelativeSource={RelativeSource FindAncestor, AncestorType=UserControl}, Converter={StaticResource HalfWidthConverter}}"/>
+    </Grid.ColumnDefinitions>
+
+    <ScrollViewer Grid.Column="0"
+                  VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Auto">
+
+      <StackPanel Orientation="Vertical"
+                  Spacing="20">
+
+        <v:StudentInputView DataContext="{Binding StudentInputViewModel}"
+                            Margin="10"/>
+
+        <Button Content="Recommend"
+                Command="{Binding RecommendCommand}"
+                IsEnabled="{Binding IsRecommendButtonEnabled}"
+                HorizontalAlignment="Right"
+                FontSize="24"
+                Margin="30,0,30,30"/>
+
+      </StackPanel>
+
+    </ScrollViewer>
+
+    <GridSplitter Grid.Column="1"
+                  ResizeDirection="Columns"
+                  Width="1"
+                  HorizontalAlignment="Stretch"
+                  Background="DarkGray"/>
+
+    <DockPanel Grid.Column="2"
+               LastChildFill="True">
+
+      <Grid DockPanel.Dock="Bottom"
+            ColumnDefinitions="Auto,2,*"
+            Margin="5,5,15,5">
+        <TextBlock Grid.Column="0"
+                   Text="*"/>
+        <TextBlock Grid.Column="2"
+                   TextWrapping="WrapWithOverflow"
+                   Text="Recommendations are provided from data analysis alone. Always check your curricular requirements first."/>
+      </Grid>
+      
+      <Separator DockPanel.Dock="Bottom"
+                 Margin="0"/>
+
+      <Panel DockPanel.Dock="Top">
+
+        <v:RecommendationsView DataContext="{Binding RecommendationsViewModel}"/>
+        
+        <TextBlock IsVisible="{Binding HasNoRecs}"
+                   Text="No recommendations to show, please add courses."
+                   TextWrapping="WrapWithOverflow"
+                   FontSize="20"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"/>
+
+      </Panel>
+      
+    </DockPanel>
+    
+  </Grid>
+  
+</UserControl>

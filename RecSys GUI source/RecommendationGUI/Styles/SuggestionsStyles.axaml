@@ -1,0 +1,30 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Design.PreviewWith>
+    <Border Padding="20">
+      <!-- Add Controls for Previewer Here -->
+    </Border>
+  </Design.PreviewWith>
+
+  <Style Selector="TextBlock.SuggestionsTitle">
+    <Setter Property="FontSize" Value="24"/>
+    <Setter Property="HorizontalAlignment" Value="Left"/>
+    <Setter Property="VerticalAlignment" Value="Center"/>
+  </Style>
+  
+  <Style Selector="StackPanel.SuggestionsSubSection">
+    <Setter Property="Orientation" Value="Vertical"/>
+    <Setter Property="Spacing" Value="5"/>
+  </Style>
+
+  <Style Selector="StackPanel.SuggestionsSubSection ItemsControl.Suggestions">
+    <Setter Property="Margin" Value="10,0,0,0"/>
+  </Style>
+
+  <Style Selector="StackPanel.SuggestionsSubSection TextBlock.Suggestion">
+    <Setter Property="FontSize" Value="20"/>
+    <Setter Property="HorizontalAlignment" Value="Left"/>
+    <Setter Property="VerticalAlignment" Value="Center"/>
+  </Style>
+  
+</Styles>

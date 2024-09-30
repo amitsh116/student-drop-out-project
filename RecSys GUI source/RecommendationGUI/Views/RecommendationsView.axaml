@@ -1,0 +1,46 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:v="clr-namespace:RecommendationGUI.Views"
+             xmlns:vm="clr-namespace:RecommendationGUI.ViewModels"
+             xmlns:dvm="clr-namespace:RecommendationGUI.ViewModels.Dummy"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="RecommendationGUI.Views.RecommendationsView"
+             x:DataType="vm:RecommendationsViewModel">
+
+  <Design.DataContext>
+    <dvm:DummyRecommendationsViewModel/>
+  </Design.DataContext>
+
+  <ScrollViewer VerticalScrollBarVisibility="Auto">
+
+    <StackPanel Spacing="70">
+
+      <ItemsControl ItemsSource="{Binding RecVMs}">
+
+        <ItemsControl.ItemsPanel>
+          <ItemsPanelTemplate>
+            <StackPanel Spacing="70"/>
+          </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+
+        <ItemsControl.ItemTemplate>
+          <DataTemplate>
+            <StackPanel>
+              <v:RecommendationView DataContext="{Binding .}"
+                                  Margin="10"/>
+              <Separator/>
+            </StackPanel>
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+
+      </ItemsControl>
+      
+      <v:LoadingScreenView IsVisible="{Binding IsLoading}"/>
+      
+    </StackPanel>
+    
+  </ScrollViewer>
+  
+</UserControl>

@@ -1,0 +1,46 @@
+
+Running estimations. This may take about 20 minutes.
+
+
+Baseline training started
+
+C:\Users\aviad\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\linear_model\_logistic.py:469: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+Accuracy: 0.8360881542699724
+
+Classification Report:
+               precision    recall  f1-score   support
+
+           0       0.88      0.69      0.77       295
+           1       0.81      0.94      0.87       431
+
+    accuracy                           0.84       726
+   macro avg       0.85      0.81      0.82       726
+weighted avg       0.84      0.84      0.83       726
+
+
+Predictor training started
+
+Accuracy: 0.9035812672176309
+
+Classification Report:
+               precision    recall  f1-score   support
+
+           0       0.90      0.95      0.92       449
+           1       0.91      0.83      0.87       277
+
+    accuracy                           0.90       726
+   macro avg       0.91      0.89      0.90       726
+weighted avg       0.90      0.90      0.90       726
+
+
+Predictor training ended
+
+Baseline recommendation system accuracy compared to predictor is 88.0%
+Final recommendation system accuracy compared to predictor is 95.0%

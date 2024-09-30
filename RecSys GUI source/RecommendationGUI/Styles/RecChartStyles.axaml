@@ -1,0 +1,28 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:charts="clr-namespace:LiveChartsCore.SkiaSharpView.Avalonia;assembly=LiveChartsCore.SkiaSharpView.Avalonia">
+  <Design.PreviewWith>
+    <Border Padding="20">
+      <!-- Add Controls for Previewer Here -->
+    </Border>
+  </Design.PreviewWith>
+
+  <Style Selector="StackPanel.ChartsSubSection">
+    <Setter Property="Orientation" Value="Vertical"/>
+  </Style>
+
+  <Style Selector="StackPanel.ChartsSubSection TextBlock.SubTitle">
+    <Setter Property="FontSize" Value="20"/>
+    <Setter Property="HorizontalAlignment" Value="Center"/>
+    <Setter Property="VerticalAlignment" Value="Center"/>
+  </Style>
+
+  <Style Selector="charts|PieChart.RecsChart">
+    <Setter Property="InitialRotation" Value="45"/>
+    <Setter Property="MaxAngle" Value="270"/>
+    <Setter Property="MinValue" Value="0"/>
+    <Setter Property="MaxValue" Value="100"/>
+    <Setter Property="MinHeight" Value="600"/>
+  </Style>
+  
+</Styles>

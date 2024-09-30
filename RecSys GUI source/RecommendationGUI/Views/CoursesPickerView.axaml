@@ -1,0 +1,54 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:v="clr-namespace:RecommendationGUI.Views"
+             xmlns:vm="clr-namespace:RecommendationGUI.ViewModels"
+             xmlns:dvm="clr-namespace:RecommendationGUI.ViewModels.Dummy"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="RecommendationGUI.Views.CoursesPickerView"
+             x:DataType="vm:CoursesPickerViewModel">
+
+  <Design.DataContext>
+    <dvm:DummyCoursesPickerViewModel/>
+  </Design.DataContext>
+
+  <UserControl.Styles>
+    <StyleInclude Source="/Styles/FormStyles.axaml"/>
+  </UserControl.Styles>
+
+  <DockPanel LastChildFill="True">
+
+    <StackPanel DockPanel.Dock="Top"
+                Classes="Field">
+      <TextBlock Text="Courses:"/>
+      <Button Content="+"
+              Command="{Binding AddCourseCommand}"/>
+    </StackPanel>
+
+    <StackPanel DockPanel.Dock="Bottom"
+                Classes="Field"
+                IsVisible="{Binding ShowAddedCourseSelector}">
+      <v:SelectorView DataContext="{Binding AddedCourseSelectorVM}"/>
+      <Button Content="-"
+              Command="{Binding AddedCourseInputRemoveCommand}"/>
+    </StackPanel>
+
+    <ScrollViewer DockPanel.Dock="Top"
+                  VerticalScrollBarVisibility="Auto">
+      <ItemsControl ItemsSource="{Binding SelectedCourseVMs}">
+        <ItemsControl.ItemTemplate>
+          <DataTemplate>
+            <StackPanel Classes="Field">
+              <v:SelectorView DataContext="{Binding Obj}"/>
+              <Button Content="-"
+                      Command="{Binding Command}"/>
+            </StackPanel>
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+      </ItemsControl>
+    </ScrollViewer>
+    
+  </DockPanel>
+
+</UserControl>
